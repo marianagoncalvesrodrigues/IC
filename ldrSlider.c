@@ -5,28 +5,26 @@
 #endif
 
 BluetoothSerial SerialBT;
-
+int freq = 5000;
+int ledChannel = 0;
+int resolution = 8;
+int LED_BUILTIN = 2;
 
 void setup() {
   Serial.begin(115200);
   SerialBT.begin("ESP32test"); //Bluetooth device name
   Serial.println("The device started, now you can pair it with bluetooth!");
+  ledcSetup(ledChannel, freq, resolution);
+  ledcAttachPin(LED_BUILTIN, ledChannel);
 }
 
-int sensorPin = 13;
-int sensorValue;
- 
-void setup()
-{
-  Serial.begin(115200); // starts the serial port at 9600
-}
- 
-void loop()
-{
+void loop(){
+  
   if(SerialBT.available()){
-   sensorValue = analogRead(sensorPin); // read analog input pin 0
-   SerialBT.write(sensorValue); 
-   Serial.print(sensorValue, DEC); // prints the value read
-   Serial.print(" \n"); // prints a space between the numbers
-   delay(1000); // wait 100ms for next reading
+    int valor = SerialBT.read();
+    ledcWrite(ledChannel, valor);
+    Serial.println("\n");
+    Serial.println(valor);
   }
+  delay(20);
+}
