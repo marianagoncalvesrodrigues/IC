@@ -1,1 +1,5 @@
 
+f -> Andar para frente, parâmetro que chama a função frente(). 
+e -> Virar a esquerda, parâmetro que chama a função esquerda().
+d -> Virar a direita, parâmetro que chama a função direita().
+LED_BUILTING -> Led on board, localizado na porta 2
