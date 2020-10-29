@@ -1,5 +1,13 @@
 
-f -> Andar para frente, parâmetro que chama a função frente(). 
-e -> Virar a esquerda, parâmetro que chama a função esquerda().
-d -> Virar a direita, parâmetro que chama a função direita().
+f            -> Andar para frente, parâmetro que chama a função frente(). 
+e            -> Virar a esquerda, parâmetro que chama a função esquerda().
+d            -> Virar a direita, parâmetro que chama a função direita().
 LED_BUILTING -> Led on board, localizado na porta 2
+frente()     -> pisca o led 1 vez.
+esquerda()   -> pisca o led 2 vez.
+direita()    -> pisca o led 3 vez.
+iniciar()    -> lê o vetor criado na loop, e chama as respectivas funções.
+tamanho      -> variável int que recebe o tamanho do vetor dinâmico.
+x            -> variável int apenas para controle.
+comando      -> vetor que contém os dados 'f', 'e', 'd'.
+loop         -> cria o vetor dinamico comandos, que armazena os comandos 'f', 'e', 'd', recebidos por bluetooth do App. Chama a função iniciar quando recebe o dado 'i' via bluetooth.
