@@ -12,44 +12,47 @@ void setup() {
   Serial.begin(115200);
   SerialBT.begin("ESP32test"); //Bluetooth device name
   Serial.println("The device started, now you can pair it with bluetooth!");
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite (LED_BUILTIN, HIGH);
+  pinMode(LED_BUILTIN, OUTPUT); //definindo pino como saida
+  digitalWrite (LED_BUILTIN, HIGH); //teste para ver se o led acende
   
 }
 
-void iniciar(char *comando){
-  int tamanho = strlen(comando);   
-  for(int x=0; x<tamanho; x++){
-    if(comando[x] == 'f'){
-      frente();
+void iniciar(char *comando){ //função que le o vetor comandos vindo do loop
+  int tamanho = strlen(comando); //tamanho dinamico do vetor comando  
+  for(int x=0; x<tamanho; x++){ //para ler o vetor
+    if(comando[x] == 'f'){ //se le 'f' chama a função frente() 
+      frente(); //pisca o led duas vezes
+      Serial.println("andando para frente");
     }
     if(comando[x] == 'e'){
       esquerda();
+      Serial.println("andando para esquerda");
     }
     if(comando[x] == 'd'){
       direita();
+      Serial.println("andando para direita");
     }
   }  
 }
 
 void loop(){
-  if(SerialBT.available()){
-    char *comandos = NULL;
+  if(SerialBT.available()){ //verifica se recebe algum dado via bluetooth
+    char *comandos = NULL; 
     char data;
     int x = 1;
 
-    data = SerialBT.read();
+    data = SerialBT.read(); //data recebe o dado do bluetooth
     
-    while(x<15 && data != 'i'){
+    while(x<15 && data != 'i'){ //x<15 pois o tamanho do vetor é 15
        if(data == 'f' || data == 'e' || data == 'd'){
         Serial.println("alocando..");
-        comandos = (char*) realloc (comandos, x * sizeof(char));
+        comandos = (char*) realloc (comandos, x * sizeof(char)); // para alocar dinamicamente
         if (comandos == NULL){
           free(comandos);
           exit(1);
         }
 
-        comandos[x-1] = data;
+        comandos[x-1] = data; //guarda o comando recebido do bluetooth no espaço [x-1] do vetor
         Serial.println("alocado o valor:");
         Serial.println(data);
 
@@ -68,28 +71,31 @@ void loop(){
 
 void frente(){
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
+  Serial.println("frente ok!");
 }
 void esquerda(){
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  delay(3000);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(2000);
+  delay(3000);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  delay(3000);
   digitalWrite(LED_BUILTIN, LOW);
+  Serial.println("esquerda ok!");
 }
 void direita(){
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  delay(5000);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(2000);
+  delay(5000);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  delay(5000);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(2000);
+  delay(5000);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  delay(5000);
   digitalWrite(LED_BUILTIN, LOW);
+  Serial.println("direita ok!");
 }
