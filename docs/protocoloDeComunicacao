@@ -1,13 +1,19 @@
 
-f            -> Andar para frente, parâmetro que chama a função frente(). 
-e            -> Virar a esquerda, parâmetro que chama a função esquerda().
-d            -> Virar a direita, parâmetro que chama a função direita().
-LED_BUILTING -> Led on board, localizado na porta 2
-frente()     -> pisca o led 1 vez.
-esquerda()   -> pisca o led 2 vez.
-direita()    -> pisca o led 3 vez.
-iniciar()    -> lê o vetor criado na loop, e chama as respectivas funções.
-tamanho      -> variável int que recebe o tamanho do vetor dinâmico.
-x            -> variável int apenas para controle.
 comando      -> vetor que contém os dados 'f', 'e', 'd'.
-loop         -> cria o vetor dinamico comandos, que armazena os comandos 'f', 'e', 'd', recebidos por bluetooth do App. Chama a função iniciar quando recebe o dado 'i' via bluetooth.
+comandos     -> vetor que armazena os dados 'f', 'e', 'd', na função loop.
+d            -> Virar a direita, parâmetro que chama a função direita().
+direita()    -> pisca o led 3 vez.
+e            -> Virar a esquerda, parâmetro que chama a função esquerda().
+esquerda()   -> pisca o led 2 vez.
+f            -> Andar para frente, parâmetro que chama a função frente(). 
+frente()     -> pisca o led 1 vez.
+i            -> variável int apenas para controle.
+iniciar()    -> lê o vetor criado na loop, e chama as respectivas funções.
+LED_BUILTING -> Led on board, localizado na porta 2
+loop         -> cria o vetor estático comandos, que armazena os comandos 'f', 'e', 'd', recebidos por bluetooth do App. Chama a função iniciar quando recebe o dado 'i' via bluetooth.
+tamanho      -> variável int que recebe o tamanho do vetor estático na função iniciar.
+tempo        -> variável que define o tempo de delay, é uma variável define.
+x            -> variável int que define o tamanho do vetor estático na função loop.
+
+//em ordem alfabética para uma melhor consulta das variáveis e termos.
+
