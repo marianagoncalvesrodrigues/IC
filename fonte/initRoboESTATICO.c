@@ -5,7 +5,7 @@
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
-#define int tempo = 3000;
+#define TEMPO 3000
 
 BluetoothSerial SerialBT;
 int LED_BUILTIN = 2;
@@ -19,7 +19,7 @@ void setup() {
   
 }
 
-void iniciar(char *comando){ //função que le o vetor comandos vindo do loop
+void iniciar(char comando[15]){ //função que le o vetor comandos vindo do loop
   int tamanho = 15; //tamanho estático do vetor comando  
   for(int x=0; x<tamanho; x++){ //para ler o vetor
     if(comando[x] == 'f'){ //se le 'f' chama a função frente() 
@@ -41,55 +41,53 @@ void iniciar(char *comando){ //função que le o vetor comandos vindo do loop
     
 void loop(){
   if(SerialBT.available()){ //verifica se recebe algum dado via bluetooth
+    int x = 0;
     char comandos[15]; 
     char data;
-    int x = 0;
 
     data = SerialBT.read(); //data recebe o dado do bluetooth
     
     while(x<15 && data != 'i'){ //x<15 pois o tamanho do vetor é 15
        if(data == 'f' || data == 'e' || data == 'd'){
         comandos[x] = data;
-        data = SerialBT.read();
+        
         x++;
+        data = SerialBT.read();
        }else{
         data = SerialBT.read();
        }
     }
-    Serial.println(data);
     iniciar(comandos);
-  } 
-      iniciar(comandos);//chama inciar
+    } 
  }
-
 
 void frente(){
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, LOW);
   Serial.println("frente ok!");
 }
 void esquerda(){
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, LOW);
   Serial.println("esquerda ok!");
 }
 void direita(){
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(tempo);
+  delay(TEMPO);
   digitalWrite(LED_BUILTIN, LOW);
   Serial.println("direita ok!");
 }
