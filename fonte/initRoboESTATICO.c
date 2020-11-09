@@ -38,24 +38,29 @@ void iniciar(char *comando){ //função que le o vetor comandos vindo do loop
 }
 
 
-
+    
 void loop(){
-   if(SerialBT.available()){ //verifica se recebe algum dado via bluetooth
-    char *comandos = NULL; 
-    char data; //dado que receberá do app
-    int x = 15;//tamanho do vetor, ou seja número de comandos máximos sem incluir iniciar
+  if(SerialBT.available()){ //verifica se recebe algum dado via bluetooth
+    char comandos[15]; 
+    char data;
+    int x = 0;
 
+    data = SerialBT.read(); //data recebe o dado do bluetooth
     
-      for(int i =0; i<x; i++){
-        data = SerialBT.read(); //data recebe o dado do bluetooth
-    
-        if(comandos[i] == 'i'){//se receber iniciar, inicia os comandos até então armazenados no vetor
-          iniciar(comandos);//chama a função iniciar e passa os comandos
-        }
-        comandos[i] == data;//o vetor recebe o comando enviado pelo app
-      }
-      iniciar(comandos);//chama inciar
+    while(x<15 && data != 'i'){ //x<15 pois o tamanho do vetor é 15
+       if(data == 'f' || data == 'e' || data == 'd'){
+        comandos[x] = data;
+        data = SerialBT.read();
+        x++;
+       }else{
+        data = SerialBT.read();
+       }
     }
+    Serial.println(data);
+    iniciar(comandos);
+  } 
+      iniciar(comandos);//chama inciar
+ }
 
 
 void frente(){
