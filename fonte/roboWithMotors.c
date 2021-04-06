@@ -15,9 +15,9 @@ int direitavar = 101;
 int frentevar = 100;
 
 int motor1Pin1 = 27; 
-int motor1Pin2 = 26; 
-int motor2Pin1 = 33; 
-int motor2Pin2 = 14;
+int motor1Pin2 = 14; 
+int motor2Pin1 = 12; 
+int motor2Pin2 = 13; 
 
 void setup() {
   Serial.begin(115200);
@@ -26,6 +26,8 @@ void setup() {
     
   pinMode(motor1Pin1, OUTPUT);
   pinMode(motor1Pin2, OUTPUT);
+  pinMode(motor2Pin1, OUTPUT);
+  pinMode(motor2Pin2, OUTPUT);
 }
 
 void iniciarComandos(char comando[15]){ //função que le o vetor comandos vindo do loop
