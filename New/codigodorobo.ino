@@ -16,16 +16,17 @@ int esquerdavar = 102;
 int direitavar = 101;
 int frentevar = 100;
 
-int motor1Pin1 = 27; 
-int motor1Pin2 = 14; 
-int motor2Pin1 = 12; 
-int motor2Pin2 = 13; 
+int motor1Pin1 = 5; 
+int motor1Pin2 = 6; 
+int motor2Pin1 = 9; 
+int motor2Pin2 = 12; 
 
 void setup() {
 //  Serial.begin(115200);
   Serial.begin(9600);
-  SerialBT.begin("ESP32test"); //Bluetooth device name
-  Serial.println("The device started, now you can pair it with bluetooth!");
+  SerialBT.begin(9600);
+  //SerialBT.begin("ESP32test"); //Bluetooth device name
+  Serial.println("The device started, now you can pair it with bluetooth!!!!");
     
   pinMode(motor1Pin1, OUTPUT);
   pinMode(motor1Pin2, OUTPUT);
@@ -62,8 +63,11 @@ void loop(){
     int x = 0;
     char comandos[15];
     char data;
-
+    Serial.println("dado chegando");
     data = SerialBT.read(); //data recebe o dado do bluetooth
+
+    Serial.println(data);
+    
 
     while(x<15 && data != 'i'){ //x<15 pois o tamanho do vetor é 15
        if(data == 'f' || data == 'e' || data == 'd'){
