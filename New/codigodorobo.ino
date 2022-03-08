@@ -11,7 +11,7 @@
 #define TEMPO 1000
 
 //BluetoothSerial SerialBT;
-SoftwareSerial = SerialBT;
+SoftwareSerial SerialBT(10, 11); // RX, TX do Arduino
 int esquerdavar = 102;
 int direitavar = 101;
 int frentevar = 100;
@@ -24,7 +24,7 @@ int motor2Pin2 = 13;
 void setup() {
 //  Serial.begin(115200);
   Serial.begin(9600);
-//  SerialBT.begin("ESP32test"); //Bluetooth device name
+  SerialBT.begin("ESP32test"); //Bluetooth device name
   Serial.println("The device started, now you can pair it with bluetooth!");
     
   pinMode(motor1Pin1, OUTPUT);
