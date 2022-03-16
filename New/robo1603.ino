@@ -8,7 +8,7 @@
 //#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 //#endif
 
-#define TEMPO 1000
+#define TEMPO 4000
 
 //BluetoothSerial SerialBT;
 SoftwareSerial SerialBT(10, 11); // RX, TX do Arduino
