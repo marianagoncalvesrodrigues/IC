@@ -5,4 +5,8 @@ uso da ponte h https://blog.eletrogate.com/guia-definitivo-de-uso-da-ponte-h-l29
 mudulo bluetooth https://mundoprojetado.com.br/modulo-bluetooth-comunicando-c-arduino-parte-1/
 
 modulo bluetooth https://blog.eletrogate.com/modulos-bluetooth-hc05-e-hc06-para-comunicacao-com-dispositivos-moveis-com-arduino/?gclid=CjwKCAiAv_KMBhAzEiwAs-rX1EJAicULiFmhWBWRasQ98vGFScVkHlIGmlxDpXGntbIAon5W7045wBoC8ogQAvD_BwE
- motorDC.setSpeed(255);
+
+velocidade do motor:
+motorDC.setSpeed(255);
+https://portal.vidadesilicio.com.br/ponte-h-l298n-controle-velocidade-motor/
+ 
