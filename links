@@ -9,4 +9,4 @@ modulo bluetooth https://blog.eletrogate.com/modulos-bluetooth-hc05-e-hc06-para-
 velocidade do motor:
 motorDC.setSpeed(255);
 https://portal.vidadesilicio.com.br/ponte-h-l298n-controle-velocidade-motor/
- 
+analogWrite(pino_de_saida,PWM);
