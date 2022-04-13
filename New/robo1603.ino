@@ -8,8 +8,8 @@
 //#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 //#endif
 
-#define TEMPO 4000
-#define TEMPO_VD 750
+#define TEMPO 750
+#define TEMPO_VD 1700
 
 //BluetoothSerial SerialBT;
 SoftwareSerial SerialBT(10, 11); // RX, TX do Arduino
@@ -104,10 +104,10 @@ int frente(int z){
   SerialBT.write(z);
   digitalWrite(motor1Pin1, LOW);
   //digitalWrite(motor1Pin2, HIGH); 
-  analogWrite(motor1Pin2, 127);
+  analogWrite(motor1Pin2, 50);
   digitalWrite(motor2Pin1, LOW);
   //digitalWrite(motor2Pin2, HIGH); 
-  analogWrite(motor2Pin2, 127);
+  analogWrite(motor2Pin2, 50);
   delay(TEMPO);
   digitalWrite(motor1Pin2, LOW);
   digitalWrite(motor2Pin2, LOW);
