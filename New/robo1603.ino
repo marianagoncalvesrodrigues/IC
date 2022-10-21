@@ -1,5 +1,3 @@
-//copia
-
 //#include <BluetoothSerial.h>
 #include <SoftwareSerial.h>
 #include <string.h>
@@ -9,7 +7,8 @@
 //#endif
 
 #define TEMPO 750
-#define TEMPO_VD 1700
+#define TEMPO_VD 750
+#define SPEED 120 
 
 //BluetoothSerial SerialBT;
 SoftwareSerial SerialBT(10, 11); // RX, TX do Arduino
@@ -21,8 +20,10 @@ int motor1Pin1 = 5;
 int motor1Pin2 = 6; 
 int motor2Pin1 = 9; 
 int motor2Pin2 = 3; 
+int led =13;
 
 void setup() {
+
 //  Serial.begin(115200);
   Serial.begin(9600);
   SerialBT.begin(9600);
@@ -33,6 +34,14 @@ void setup() {
   pinMode(motor1Pin2, OUTPUT);
   pinMode(motor2Pin1, OUTPUT);
   pinMode(motor2Pin2, OUTPUT);
+  pinMode(led, OUTPUT);
+  delay(100);
+  digitalWrite(led, HIGH);
+  delay(200);
+  digitalWrite(led, LOW);
+
+  //frente(0);
+
 }
 
 void iniciarComandos(char comando[15]){ //função que le o vetor comandos vindo do loop
@@ -100,18 +109,21 @@ void loop(){
  }
 
 int frente(int z){
+  digitalWrite(led, HIGH);
+  Serial.println("frente");
   SerialBT.write(frentevar);
   SerialBT.write(z);
   digitalWrite(motor1Pin1, LOW);
   //digitalWrite(motor1Pin2, HIGH); 
-  analogWrite(motor1Pin2, 50);
+  analogWrite(motor1Pin2, SPEED);
   digitalWrite(motor2Pin1, LOW);
   //digitalWrite(motor2Pin2, HIGH); 
-  analogWrite(motor2Pin2, 50);
+  analogWrite(motor2Pin2, SPEED);
   delay(TEMPO);
   digitalWrite(motor1Pin2, LOW);
   digitalWrite(motor2Pin2, LOW);
   Serial.println("frente ok!");
+    digitalWrite(led, LOW);
 }
 int esquerda(int z){
   SerialBT.write(esquerdavar);
@@ -119,7 +131,7 @@ int esquerda(int z){
   digitalWrite(motor2Pin1, LOW);
   digitalWrite(motor2Pin2, LOW); 
   digitalWrite(motor1Pin1, LOW);
-  analogWrite(motor1Pin2, 50);
+  analogWrite(motor1Pin2, SPEED);
   delay(TEMPO_VD);
   digitalWrite(motor1Pin2, LOW);
   Serial.println("esquerda ok!");
@@ -130,7 +142,7 @@ int direita(int z){
   digitalWrite(motor1Pin1, LOW);
   digitalWrite(motor1Pin2, LOW); 
   digitalWrite(motor2Pin1, LOW);
-  analogWrite(motor2Pin2, 50); 
+  analogWrite(motor2Pin2, SPEED); 
   delay(TEMPO_VD);
   digitalWrite(motor2Pin2, LOW); 
   
