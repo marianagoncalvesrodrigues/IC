@@ -8,7 +8,8 @@
 
 #define TEMPO 750
 #define TEMPO_VD 750
-#define SPEED 120 
+#define SPEEDD 120 
+#define SPEEDE 130 
 
 //BluetoothSerial SerialBT;
 SoftwareSerial SerialBT(10, 11); // RX, TX do Arduino
@@ -115,10 +116,10 @@ int frente(int z){
   SerialBT.write(z);
   digitalWrite(motor1Pin1, LOW);
   //digitalWrite(motor1Pin2, HIGH); 
-  analogWrite(motor1Pin2, SPEED);
+  analogWrite(motor1Pin2, SPEEDD);
   digitalWrite(motor2Pin1, LOW);
   //digitalWrite(motor2Pin2, HIGH); 
-  analogWrite(motor2Pin2, SPEED);
+  analogWrite(motor2Pin2, SPEEDE);
   delay(TEMPO);
   digitalWrite(motor1Pin2, LOW);
   digitalWrite(motor2Pin2, LOW);
@@ -131,7 +132,7 @@ int esquerda(int z){
   digitalWrite(motor2Pin1, LOW);
   digitalWrite(motor2Pin2, LOW); 
   digitalWrite(motor1Pin1, LOW);
-  analogWrite(motor1Pin2, SPEED);
+  analogWrite(motor1Pin2, SPEEDD);
   delay(TEMPO_VD);
   digitalWrite(motor1Pin2, LOW);
   Serial.println("esquerda ok!");
@@ -142,7 +143,7 @@ int direita(int z){
   digitalWrite(motor1Pin1, LOW);
   digitalWrite(motor1Pin2, LOW); 
   digitalWrite(motor2Pin1, LOW);
-  analogWrite(motor2Pin2, SPEED); 
+  analogWrite(motor2Pin2, SPEEDE); 
   delay(TEMPO_VD);
   digitalWrite(motor2Pin2, LOW); 
   
